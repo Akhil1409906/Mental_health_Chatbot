@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Mental Health Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f1f3f6, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #212529;
+        }
+        .nav-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            transition: 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #000000;
+            border-radius: 4px;
+        }
+
+        #chat-container {
+    width: 1100px;
+    height: 850px;
+    background: #f4f4f9;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: none;
+    margin: 30px auto;
+}
+
+#chat-header {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-bottom: 3px solid #ffffff30;
+}
+
+#chat-header img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(1.2);
+}
+
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px;
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+}
+
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #48c6ef, #6f86d6);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 18px 18px 0 18px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-size: 1rem;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #333;
+    padding: 12px 18px;
+    border-radius: 18px 18px 18px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-size: 1rem;
+}
+
+.user-icon, .bot-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-icon img, .bot-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+#chat-footer {
+    background: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #e0e0e0;
+}
+
+#user-input {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #b0bec5;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+#user-input:focus {
+    border-color: #4b6cb7;
+    box-shadow: 0 0 5px rgba(75, 108, 183, 0.5);
+}
+
+#send-btn {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 12px;
+}
+
+#send-btn:hover {
+    background: linear-gradient(135deg, #6f86d6, #4b6cb7);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+  <div class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+   
+  </div>
+    <div id="chat-container">
+        <div id="chat-header">
+            <img src="https://img.icons8.com/color/48/000000/mental-health.png" alt="Mental Health Icon">
+
+            TheraBot
+        </div>
+        <div id="chat-box">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="user-input" class="form-control" placeholder="Type your msg...." />
+            <button id="send-btn" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sendButton = document.getElementById("send-btn");
+            const userInput = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+
+            sendButton.addEventListener("click", handleSend);
+
+            userInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    handleSend();
+                }
+            });
+
+            function handleSend() {
+                const message = userInput.value.trim();
+                if (message) {
+                    appendMessage(message, "user-message", "https://img.icons8.com/color/48/000000/user-male-circle.png");
+                    userInput.value = "";
+
+                    // Play sound for user message
+                    playSound("user_message");
+
+                    // Add loading message while waiting for bot's response
+                    appendLoadingMessage();
+
+                    // Simulate delay (8 seconds)
+                    setTimeout(() => {
+                        document.querySelector(".loading").remove();
+
+                        // Fetch the response from the backend (Flask API)
+                        fetch("/get", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: `msg=${message}`
+                        })
+                        .then(response => response.text())
+                        .then(botResponse => {
+                            appendMessage(botResponse, "bot-message", "https://img.icons8.com/color/48/000000/robot.png");
+
+                            // Play sound for bot response
+                            playSound("bot_response");
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                            appendMessage("Sorry, I couldn't understand that.", "bot-message", "https://img.icons8.com/color/48/000000/robot.png");
+                        });
+                    }, 6000); // 6-second delay
+                }
+            }
+
+            function appendMessage(message, type, iconUrl) {
+                const messageDiv = document.createElement("div");
+                messageDiv.className = `message ${type}`;
+
+                const icon = document.createElement("div");
+                icon.className = type.includes("user") ? "user-icon" : "bot-icon";
+
+                const img = document.createElement("img");
+                img.src = iconUrl;
+                icon.appendChild(img);
+
+                const text = document.createElement("span");
+                text.textContent = message;
+
+                messageDiv.appendChild(icon);
+                messageDiv.appendChild(text);
+                chatBox.appendChild(messageDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            function appendLoadingMessage() {
+                const loadingDiv = document.createElement("div");
+                loadingDiv.className = "message loading";
+
+                const icon = document.createElement("div");
+                icon.className = "bot-icon";
+
+                const img = document.createElement("img");
+                img.src = "https://img.icons8.com/color/48/000000/robot.png";
+                icon.appendChild(img);
+
+                const dots = document.createElement("span");
+                dots.textContent = "Typing...";
+
+                loadingDiv.appendChild(icon);
+                loadingDiv.appendChild(dots);
+                chatBox.appendChild(loadingDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            function playSound(type) {
+                let sound;
+
+                // Create a new Audio object for the sound
+                if (type === "user_message") {
+                    sound = new Audio("/static/aud1.mp3");  // User message sound
+                } else if (type === "bot_response") {
+                    sound = new Audio("/static/aud2.mp3");  // Bot response sound
+                }
+
+                // Play sound once it's ready
+                sound.play().catch((error) => {
+                    console.error("Audio playback error:", error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Chatbot</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles can go here */
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff !important; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: black !important; /* Black text for the brand */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: black  !important; /* Black text for links */
+    margin-right: 1.5rem;
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition for both color and background */
+}
+
+/* Hover Effect */
+.navbar-nav .nav-link:hover {
+    color: #f0f0f0; /* Lighter black color on hover */
+    background-color: rgba(0, 0, 0, 0.05); /* Light black background on hover */
+}
+
+/* Header Section */
+.header-section {
+    background-color: #ffffff !important;
+    color: #000000;
+    padding: 80px 0;
+    text-align: center;
+    background-image: url('static/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.header-section::after {
+    content: "";
+    background: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Put the pseudo-element behind the text */
+}
+
+.header-text {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.header-text p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.btn-light {
+    background-color: #fbfaf8;
+    color: #0f0f0f;
+    font-size: 1.2rem;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.btn-light:hover {
+    background-color: #0e0e0e;
+    color: rgb(255, 255, 255);
+}
+
+/* Main Content Section */
+.main-content {
+    padding: 50px 0;
+    background-color: #fff;
+}
+.main-content img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.main-content img:hover {
+    transform: scale(1.05);
+}
+.card {
+    margin-top: 20px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.card-img-top {
+    border-radius: 15px 15px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.card-body {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 0 0 15px 15px;
+}
+.card-body h5 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #0b0b0c;
+}
+.card-body p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #f9f9f9;
+    color: #000000;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 1rem;
+}
+.footer p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.footer a {
+    color: #ffeb3b;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.footer a:hover {
+    color: #f9a825;
+}
+
+/* Button Hover Effects */
+.btn-hover {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #ffeb3b;
+    color: #004d75;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+.btn-hover:hover {
+    transform: translateY(-5px);
+    background-color: #f9a825;
+    color: white;
+}
+.btn-hover:active {
+    transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.modal-header {
+    background-color: #004d75;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.modal-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+.modal-footer {
+    background-color: #f9f9f9;
+    border-top: 1px solid #e1e1e1;
+}
+.modal-footer button {
+    font-weight: 600;
+    color: #004d75;
+    background-color: #fff;
+    border: 2px solid #004d75;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.modal-footer button:hover {
+    background-color: #004d75;
+    color: white;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .header-text {
+        font-size: 2.2rem;
+    }
+    .header-text p {
+        font-size: 1.2rem;
+    }
+    .navbar {
+        padding: 10px 15px;
+    }
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+    .main-content img {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animations */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.header-section {
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.card {
+    animation: fadeIn 1.5s ease-out;
+}
+
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Mental Health Chatbot</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<header class="header-section">
+    <div class="container">
+        <h1 class="header-text">Mental Health Support Chatbot</h1>
+        <p class="header-text">Your Personal Assistant for Mental Wellbeing</p>
+        <a href="/login" class="btn btn-light btn-lg">Get Started</a>
+    </div>
+</header>
+
+<!-- Main Content Section -->
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <!-- First Image -->
+            <div class="col-md-6">
+                <img src="static/n7.jpg" class="img-fluid rounded" alt="Mental Health Support">
+            </div>
+            <!-- Second Image -->
+            <div class="col-md-6">
+                <img src="static/n3.jpg" class="img-fluid rounded" alt="Chatbot Features">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <img src="static/n4.jpg" class="card-img-top" alt="Mental Health Resources">
+                    <div class="card-body">
+                        <h5 class="card-title">About the Chatbot</h5>
+                        <p class="card-text">Our chatbot is designed to provide mental health support, offer resources, and help you manage stress and anxiety. It leverages advanced NLP techniques to give you personalized assistance and emotional support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <!-- Third Image -->
+            <div class="col-md-6">
+                <img src="static/n2.jpg" class="img-fluid rounded" alt="Support Chatbot">
+            </div>
+            <!-- Fourth Image -->
+            <div class="col-md-6">
+                <img src="static/n8.jpg" class="img-fluid rounded" alt="Mental Health">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <p>&copy; 2025 Mental Health Chatbot. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

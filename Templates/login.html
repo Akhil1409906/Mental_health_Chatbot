@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login page</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      padding: 0 10px;
+      position: relative;
+      background-color: #ffffff; /* Background color white */
+      color: black; /* Text color black */
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-bar a {
+      color: black; /* Black text color for nav links */
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      background: rgba(0, 0, 0, 0.1);
+      border-color: #000;
+      border-radius: 4px;
+    }
+
+    .wrapper {
+      width: 400px;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.2); /* Slight border for form */
+      background-color: #ffffff; /* White background for the form */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for form */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: black; /* Black text for heading */
+    }
+
+    .input-field {
+      position: relative;
+      border-bottom: 2px solid black; /* Black border for input fields */
+      margin: 15px 0;
+    }
+
+    .input-field label {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      color: black; /* Black label color */
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.15s ease;
+    }
+
+    .input-field input {
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: black; /* Black text in the input field */
+    }
+
+    .input-field input:focus~label,
+    .input-field input:valid~label {
+      font-size: 0.8rem;
+      top: 10px;
+      transform: translateY(-120%);
+    }
+
+    .forget {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 25px 0 35px 0;
+      color: black; /* Black color for text */
+    }
+
+    #remember {
+      accent-color: #0a0808;
+    }
+
+    .forget label {
+      display: flex;
+      align-items: center;
+    }
+
+    .forget label p {
+      margin-left: 8px;
+    }
+
+    .wrapper a {
+      color: black; /* Black color for links */
+      text-decoration: none;
+    }
+
+    .wrapper a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      background: black; /* Black background for button */
+      color: white; /* White text color for button */
+      font-weight: 600;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 16px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      color: black;
+      border-color: black;
+      background: rgba(255, 255, 255, 0.15); /* Light hover effect */
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 30px;
+      color: black; /* Black color for register text */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <div class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+  </div>
+
+  <div class="wrapper">
+    <form action="/login" method="post">
+      <h2>Login</h2>
+      <div class="input-field">
+        <input type="text" name="username" required>
+        <label>Enter your username</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register"></div>
+    </form>
+  </div>
+</body>
+</html>

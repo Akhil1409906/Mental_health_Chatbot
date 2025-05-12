@@ -1,0 +1,99 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening", "How are you?", "Howdy"],
+      "responses": ["Hello! How can I assist you today?", "Hi there! How are you feeling today?", "Hey! How can I help?"]
+    },
+    {
+      "tag": "feeling_sad",
+      "patterns": ["I feel sad", "I'm feeling down", "I am upset", "I'm feeling low", "I feel empty", "I'm not happy"],
+      "responses": ["I'm really sorry you're feeling this way. Do you want to talk about it?", "It's okay to feel sad sometimes. I'm here for you.", "I'm here for you. Would you like to share what's bothering you?"]
+    },
+    {
+      "tag": "feeling_anxious",
+      "patterns": ["I feel anxious", "I'm anxious", "I feel nervous", "I'm worried", "I'm stressed out", "I feel overwhelmed"],
+      "responses": ["It's okay to feel anxious. Take a deep breath and try to relax. Want to talk about what's on your mind?", "I understand. It's important to take things slow. Would you like some tips on calming down?", "You're not alone in this. Would you like some strategies to manage anxiety?"]
+    },
+    {
+      "tag": "self_harm",
+      "patterns": ["I want to hurt myself", "I'm thinking about self-harm", "I don't feel like living", "I feel hopeless", "I don't want to continue"],
+      "responses": ["I'm really sorry you're feeling like this, but I can't help in the way you need. It's important to talk to a professional. Please reach out to someone who can help.", "You matter and you're not alone. Please talk to a counselor or a trusted person around you."]
+    },
+    {
+      "tag": "seeking_help",
+      "patterns": ["I need help", "Can you help me?", "I need advice", "What should I do?", "Can I talk to someone?", "I don’t know what to do"],
+      "responses": ["You don't have to go through this alone. Talking to a counselor or therapist can help a lot. I can help you find resources or just listen.", "It's great that you're reaching out. A therapist could offer you the support you need. Would you like to look up some resources?", "It’s important to ask for help when you need it. Would you like guidance on where to seek help?"]
+    },
+    {
+      "tag": "motivation",
+      "patterns": ["I need motivation", "Give me some advice", "I feel like giving up", "I need encouragement", "I feel stuck", "I need a push"],
+      "responses": ["You're stronger than you think! Keep going. You're doing great!", "It's okay to have setbacks. What's important is that you're still trying.", "Every small step counts. You're on the right path, don't give up now!"]
+    },
+    {
+      "tag": "gratitude",
+      "patterns": ["I'm thankful", "I feel grateful", "I appreciate life", "I'm thankful for this moment", "I'm grateful for today"],
+      "responses": ["It's wonderful to be grateful. Taking time to appreciate the good things in life can really help with mental well-being!", "Gratitude is powerful. Hold on to those positive moments.", "Being thankful can uplift your mood. What are you grateful for today?"]
+    },
+    {
+      "tag": "sleep_issues",
+      "patterns": ["I can't sleep", "I'm having trouble sleeping", "I can't fall asleep", "I stay awake all night", "I can't get rest", "I'm restless"],
+      "responses": ["Try to relax your body by breathing deeply. You can also try reading a book or listening to soothing music.", "If you're having trouble sleeping, creating a bedtime routine might help. How about turning off screens 30 minutes before sleep?", "A warm cup of tea or a few minutes of deep breathing can help calm your mind before bed."]
+    },
+    {
+      "tag": "support_network",
+      "patterns": ["Who can I talk to?", "I need someone to talk to", "I'm feeling alone", "I feel isolated", "I don't have anyone to talk to", "I feel invisible"],
+      "responses": ["You're not alone. Reach out to a close friend, family member, or a therapist. Talking can really help!", "It's important to talk to someone you trust. Would you like some suggestions on how to reach out for support?", "Many people care about you, even if it doesn't feel that way. It's okay to ask for support."]
+    },
+    {
+      "tag": "anger_management",
+      "patterns": ["I'm angry", "I can't control my anger", "I feel furious", "I feel irritated", "I'm so mad", "I'm frustrated"],
+      "responses": ["Anger is a natural emotion, but it’s important to express it healthily. Try taking a walk or counting to ten.", "When you're feeling angry, deep breathing exercises can help you calm down. Would you like to try one?", "It's okay to feel angry, but finding a way to release it calmly is important. Let's talk about some techniques."]
+    },
+    {
+      "tag": "positive_thinking",
+      "patterns": ["I'm feeling negative", "I think I'm not good enough", "I feel worthless", "I'm having bad thoughts", "I can't see the positives"],
+      "responses": ["You are enough just as you are. Try to focus on your strengths and the positive things you’ve done.", "Negative thoughts can be tough, but they don’t define you. You're capable of great things!", "Let’s focus on the positives. What are some things you're proud of about yourself?"]
+    },
+    {
+      "tag": "mindfulness",
+      "patterns": ["I'm feeling stressed", "Can I relax?", "I need peace", "I feel overwhelmed", "I can't focus", "I need to calm down"],
+      "responses": ["Mindfulness can help you relax. Try closing your eyes and focusing on your breathing for a few minutes.", "Take a deep breath and focus on the present moment. Let’s try a simple mindfulness exercise together.", "It’s okay to take a break. Let’s do a quick breathing exercise: Breathe in slowly for 4 seconds, hold for 4 seconds, and breathe out for 4 seconds."]
+    },
+    {
+      "tag": "life_goals",
+      "patterns": ["I don't know what to do with my life", "I'm lost", "I don't have a purpose", "What should I do with my life?", "I feel directionless"],
+      "responses": ["It's okay to feel unsure sometimes. Reflecting on what makes you happy and what you're passionate about can help.", "Finding your purpose takes time. Consider what excites you and try pursuing that. You're on the right track.", "It's okay not to have all the answers yet. Focus on one step at a time and be open to new opportunities."]
+    },
+    {
+      "tag": "self_esteem",
+      "patterns": ["I don't feel good enough", "I feel unworthy", "I have low self-esteem", "I don't like myself"],
+      "responses": ["You are worthy just as you are. Work on recognizing your strengths and treating yourself with kindness.", "Self-esteem takes time to build. Practice positive affirmations and focus on the things you do well.", "It's okay to have doubts, but don't let them define you. You're valuable and important."]
+    },
+    {
+      "tag": "relationships",
+      "patterns": ["I'm having problems with my relationship", "I don't feel loved", "I'm not happy in my relationship", "I feel misunderstood by my partner"],
+      "responses": ["Relationships can be challenging. Communication is key, try expressing your feelings honestly with your partner.", "It's important to feel understood and supported. Would you like some tips on improving communication?", "Remember that relationships take effort from both sides. Focus on honest conversations and mutual respect."]
+    },
+    {
+      "tag": "social_interaction",
+      "patterns": ["I feel awkward in social situations", "I'm shy", "I don't know how to talk to people", "I feel anxious in groups", "I'm bad at making friends"],
+      "responses": ["It's okay to feel that way. Social skills improve over time, and it’s fine to take small steps.", "Try starting with simple interactions. Saying hello or asking a question is a great way to connect.", "Remember, everyone feels nervous sometimes. It's normal to take your time in social situations."]
+    },
+    {
+      "tag": "break_from_routine",
+      "patterns": ["I feel bored", "I need a break", "I feel stuck in my routine", "I need a change", "I need some fun"],
+      "responses": ["Sometimes a small change can bring fresh energy. Try something new today, even if it's just a walk in a new place.", "It's okay to step back and recharge. A break can give you a new perspective.", "If you feel stuck, trying a new hobby or spending time with friends can help break the monotony."]
+    },
+    {
+      "tag": "positive_affirmations",
+      "patterns": ["I need to hear something positive", "Give me an affirmation", "Tell me something good about myself", "I feel like I'm not enough"],
+      "responses": ["You are strong, capable, and deserving of love and happiness.", "You are unique and have a purpose. The world is better with you in it.", "Believe in yourself. You're doing amazing, and every step forward counts."]
+    },
+    {
+      "tag": "end_conversation",
+      "patterns": ["Thank you", "Goodbye", "See you later", "Take care", "Bye", "I need to go"],
+      "responses": ["You're welcome! Take care of yourself.", "Goodbye! If you need anything, I'll be here.", "Take care! Reach out anytime.", "Stay safe and remember you're not alone."]
+    }
+  ]
+}
